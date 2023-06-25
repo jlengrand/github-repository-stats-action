@@ -8,8 +8,6 @@ async function main() {
     const time = (new Date()).toTimeString();
 
     const serverUrl = core.getInput('server-url');
-    console.log(`The server url is ${serverUrl}!`);
-    console.log(`Server URL null ? ${serverUrl == null}!`);
 
     const token = core.getInput('access-token');
     console.log(`The token is ${token}!`);
@@ -39,7 +37,7 @@ async function main() {
       time: time
     }
 
-    sendStats(payload);
+    sendStats(serverUrl, payload);
   
     core.setOutput("payload", payload);
   } catch (error) {
@@ -47,13 +45,15 @@ async function main() {
   }
 }
 
-async function sendStats(payload) {
-  // try {
-  //  const response = await got.get('https://reqres.in/api/users').json();
-  //   console.log(response.data);
-  // } catch (error) {
-  //   console.error(error);
-  // }
+async function sendStats(serverUrl, payload) {
+  try {
+   const response = await got.post(`${serverUrl}/api/repositories/data`, {
+      json: payload,
+   }).json();
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 
