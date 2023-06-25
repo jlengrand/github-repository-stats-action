@@ -6,7 +6,7 @@ try {
   const token = core.getInput('access-token');
   console.log(`The token is ${token}!`);
 
-  const octokit = github.getOctokit(myToken);
+  const octokit = github.getOctokit(token);
 
 
   // `who-to-greet` input defined in action metadata file
