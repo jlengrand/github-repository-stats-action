@@ -16,15 +16,18 @@ async function main() {
 
     const octokit = github.getOctokit(token);
     
-    const data = await octokit.request('GET /repos/{owner}/{repo}/traffic/views', {
+    const views = await octokit.request('GET /repos/{owner}/{repo}/traffic/views', {
       owner: owner,
       repo: repo,
-      // headers: {
-      //   'X-GitHub-Api-Version': '2022-11-28'
-      // }
+    })
+
+    const clones = await octokit.request('GET /repos/{owner}/{repo}/traffic/clones', {
+      owner: owner,
+      repo: repo,
     })
   
-    console.log(`The data : ${JSON.stringify(data, undefined, 2)}`);
+    console.log(`The views : ${JSON.stringify(data, undefined, 2)}`);
+    console.log(`The clones : ${JSON.stringify(data, undefined, 2)}`);
   
     // `who-to-greet` input defined in action metadata file
     // const nameToGreet = core.getInput('who-to-greet');
