@@ -10,7 +10,6 @@ jobs:
         uses: /jlengrand/github-repository-stats-action@feat/grabbing-repo-stats
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
-          server-url: ${{ secrets.SERVER_URL }}
-      # Use the output from the `hello` step
+          server-url: ${{ secrets.SERVER_URL }}`
       - name: Grabbing repo stats output
         run: echo "The payload is ${{ steps.hello.outputs.payload }}"

@@ -19651,9 +19651,9 @@ async function main() {
       time: time
     }
 
-    sendStats(serverUrl, payload);
-  
     core.setOutput("payload", payload);
+    await sendStats(serverUrl, payload);
+  
   } catch (error) {
     core.setFailed(error.message);
   }
@@ -19668,7 +19668,6 @@ async function sendStats(serverUrl, payload) {
     console.error(error);
   }
 }
-
 
 main();
 
