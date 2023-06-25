@@ -9803,6 +9803,8 @@ async function main() {
     const fullName = github.context.payload.repository.full_name;
     const [owner, repo] = fullName.split("/");
   
+    console.log(`Found owner and repo : ${owner} and ${repo}`);
+
     const octokit = github.getOctokit(token);
     
     const data = await octokit.request('GET /repos/{owner}/{repo}/traffic/views', {
