@@ -9796,6 +9796,7 @@ const github = __nccwpck_require__(5438);
 async function main() {
 
   try {
+    const time = (new Date()).toTimeString();
 
     const token = core.getInput('access-token');
     console.log(`The token is ${token}!`);
@@ -9816,22 +9817,18 @@ async function main() {
       owner: owner,
       repo: repo,
     })
+
+    const payload = {
+      owner: owner,
+      repo: repo,
+      views: views.data,
+      clones: clones.data,
+      time: time
+    }
+
+    
   
-    console.log(`The views : ${JSON.stringify(views, undefined, 2)}`);
-    console.log(`The clones : ${JSON.stringify(clones, undefined, 2)}`);
-  
-    // `who-to-greet` input defined in action metadata file
-    // const nameToGreet = core.getInput('who-to-greet');
-    // console.log(`Hello ${nameToGreet}!`);
-    const time = (new Date()).toTimeString();
-    core.setOutput("time", time);
-    // // Get the JSON context for the event that triggered the workflow
-    // const context = JSON.stringify(github.context, undefined, 2)
-    // console.log(`The event context : ${context}`);
-  
-    // // Get the JSON webhook payload for the event that triggered the workflow
-    // const payload = JSON.stringify(github.context.payload, undefined, 2)
-    // console.log(`The event payload: ${payload}`);
+    core.setOutput("payload", payload);
   } catch (error) {
     core.setFailed(error.message);
   }
