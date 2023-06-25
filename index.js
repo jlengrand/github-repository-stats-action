@@ -5,7 +5,7 @@ import got from 'got';
 async function main() {
 
   try {
-    const time = (new Date()).toTimeString();
+    const time = Date.now();
 
     const serverUrl = core.getInput('server-url');
     const token = core.getInput('access-token');
@@ -33,7 +33,7 @@ async function main() {
       repo: repo,
       views: views.data,
       clones: clones.data,
-      // time: time
+      time: time
     }
 
     core.setOutput("payload", payload);
