@@ -3,13 +3,13 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Grabbing latest statistics from the repository
     steps:
-      - name: Hello world action step
+      - name: Grabbing repo stats
         id: hello
         uses: /jlengrand/github-repository-stats-action@feat/grabbing-repo-stats
         with:
           who-to-greet: 'Mona the Octocat'
       # Use the output from the `hello` step
-      - name: Get the output time
+      - name: Grabbing repo stats output
         run: echo "The time was ${{ steps.hello.outputs.time }}"
