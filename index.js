@@ -26,8 +26,8 @@ async function main() {
       repo: repo,
     })
   
-    console.log(`The views : ${JSON.stringify(data, undefined, 2)}`);
-    console.log(`The clones : ${JSON.stringify(data, undefined, 2)}`);
+    console.log(`The views : ${JSON.stringify(views, undefined, 2)}`);
+    console.log(`The clones : ${JSON.stringify(clones, undefined, 2)}`);
   
     // `who-to-greet` input defined in action metadata file
     // const nameToGreet = core.getInput('who-to-greet');
