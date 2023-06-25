@@ -3,8 +3,7 @@ description: 'Gets statistics about a GitHub repository'
 inputs:
   access-token: 
     description: 'Personal access token to use to access the GitHub API'
-    # required: true
-    default: '${{ secrets.GITHUB_TOKEN }}'
+    required: true
 outputs:
   time: # id of output
     description: 'The time we greeted you'

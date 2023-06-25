@@ -9,7 +9,7 @@ jobs:
         id: hello
         uses: /jlengrand/github-repository-stats-action@feat/grabbing-repo-stats
         with:
-          who-to-greet: 'Mona the Octocat'
+          access-token: ${{ secrets.GITHUB_TOKEN }}
       # Use the output from the `hello` step
       - name: Grabbing repo stats output
         run: echo "The time was ${{ steps.hello.outputs.time }}"
