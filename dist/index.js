@@ -9781,14 +9781,27 @@ module.exports = JSON.parse('[[[0,44],"disallowed_STD3_valid"],[[45,46],"valid"]
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__nccwpck_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
 /******/ 	if (typeof __nccwpck_require__ !== 'undefined') __nccwpck_require__.ab = __dirname + "/";
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
 (() => {
+"use strict";
+__nccwpck_require__.r(__webpack_exports__);
 const core = __nccwpck_require__(2186);
 const github = __nccwpck_require__(5438);
 
@@ -9797,6 +9810,10 @@ async function main() {
 
   try {
     const time = (new Date()).toTimeString();
+
+    const serverUrl = core.getInput('server-url');
+    console.log(`The server url is ${serverUrl}!`);
+    console.log(`Server URL null ? ${serverUrl == null}!`);
 
     const token = core.getInput('access-token');
     console.log(`The token is ${token}!`);
@@ -9826,7 +9843,7 @@ async function main() {
       time: time
     }
 
-    
+    sendStats(payload);
   
     core.setOutput("payload", payload);
   } catch (error) {
@@ -9834,7 +9851,18 @@ async function main() {
   }
 }
 
+async function sendStats(payload) {
+  // try {
+  //  const response = await got.get('https://reqres.in/api/users').json();
+  //   console.log(response.data);
+  // } catch (error) {
+  //   console.error(error);
+  // }
+}
+
+
 main();
+
 
 })();
 
