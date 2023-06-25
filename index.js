@@ -33,7 +33,7 @@ async function main() {
       repo: repo,
       views: views.data,
       clones: clones.data,
-      time: time
+      // time: time
     }
 
     core.setOutput("payload", payload);
