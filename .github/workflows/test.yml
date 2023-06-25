@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Hello world action step
         id: hello
-        uses: /jlengrand/github-repository-stats-action@v0.1
+        uses: /jlengrand/github-repository-stats-action@feat/grabbing-repo-stats
         with:
           who-to-greet: 'Mona the Octocat'
       # Use the output from the `hello` step
