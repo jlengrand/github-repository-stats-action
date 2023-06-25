@@ -1,16 +1,16 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  hello_send_data_job:
     runs-on: ubuntu-latest
     name: Grabbing latest statistics from the repository
     steps:
       - name: Grabbing repo stats
-        id: hello
+        id: send_data
         uses: /jlengrand/github-repository-stats-action@feat/grabbing-repo-stats
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           server-url: ${{ secrets.SERVER_URL }}
       # Use the output from the `hello` step
       - name: Grabbing repo stats output
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+        run: echo "The payload is ${{ steps.send_data.outputs.payload }}"

@@ -8,7 +8,6 @@ async function main() {
     const time = (new Date()).toTimeString();
 
     const serverUrl = core.getInput('server-url');
-
     const token = core.getInput('access-token');
     console.log(`The token is ${token}!`);
   
@@ -49,8 +48,7 @@ async function sendStats(serverUrl, payload) {
   try {
    const response = await got.post(`${serverUrl}/api/repositories/data`, {
       json: payload,
-   }).json();
-    console.log(response.data);
+   });
   } catch (error) {
     console.error(error);
   }
