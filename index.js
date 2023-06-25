@@ -46,9 +46,9 @@ async function main() {
 
 async function sendStats(serverUrl, payload) {
   try {
-   await got.post(`${serverUrl}/api/repositories/data`, {
+   const response = await got.post(`${serverUrl}/api/repositories/data`, {
       json: payload,
-   });
+   }).json();
   } catch (error) {
     console.error(error);
   }

@@ -19661,9 +19661,9 @@ async function main() {
 
 async function sendStats(serverUrl, payload) {
   try {
-   await got_dist_source.post(`${serverUrl}/api/repositories/data`, {
+   const response = await got_dist_source.post(`${serverUrl}/api/repositories/data`, {
       json: payload,
-   });
+   }).json();
   } catch (error) {
     console.error(error);
   }
