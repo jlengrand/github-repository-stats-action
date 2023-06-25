@@ -4,6 +4,9 @@ inputs:
   access-token: 
     description: 'Personal access token to use to access the GitHub API'
     required: true
+  server-url: 
+    description: 'URL of the server to send statistics to. Used only for testing purposes'
+    default: 'https://localhost:8080' # TODO: Change!
 outputs:
   time: # id of output
     description: 'The time we greeted you'
