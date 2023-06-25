@@ -9,7 +9,7 @@ inputs:
     default: 'https://localhost:8080' # TODO: Change!
 outputs:
   time: # id of output
-    description: 'The time we greeted you'
+    description: 'The time I greeted you'
 runs:
   using: 'node16'
   main: 'dist/index.js'
