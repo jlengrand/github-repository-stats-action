@@ -8,8 +8,8 @@ inputs:
     description: 'URL of the server to send statistics to. Used only for testing purposes'
     default: 'https://localhost:8080' # TODO: Change!
 outputs:
-  time: # id of output
-    description: 'The time I greeted you'
+  payload:
+    description: 'The payload we sent to the server'
 runs:
   using: 'node16'
   main: 'dist/index.js'
