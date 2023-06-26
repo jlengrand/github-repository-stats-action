@@ -28,6 +28,9 @@ async function main() {
       repo: repo,
     })
 
+    await sendViewsStats(serverUrl, user, repo, views.data);
+    await sendClonesStats(serverUrl, user, repo, clones.data);
+  
     const payload = {
       owner: owner,
       repo: repo,
@@ -37,21 +40,30 @@ async function main() {
     }
 
     core.setOutput("payload", payload);
-    await sendStats(serverUrl, payload);
-  
+
   } catch (error) {
     core.setFailed(error.message);
   }
 }
 
-async function sendStats(serverUrl, payload) {
+async function sendViewsStats(serverUrl, owner, repo, payload) {
   try {
-   const response = await got.post(`${serverUrl}/api/repositories/data`, {
+   const response = await got.post(`${serverUrl}/api/repositories/${owner}/${repo}/views`, {
       json: payload,
    }).json();
   } catch (error) {
     console.error(error);
   }
+}
+
+async function sendClonesStats(serverUrl, owner, repo, payload) {
+  try {
+    const response = await got.post(`${serverUrl}/api/repositories/${owner}/${repo}/clones`, {
+       json: payload,
+    }).json();
+   } catch (error) {
+     console.error(error);
+   }
 }
 
 main();
