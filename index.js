@@ -11,6 +11,7 @@ async function main() {
 
     // remove trailing slash
     if (serverUrl.endsWith('/')) {
+      console.log("slicing");
       serverUrl = serverUrl.slice(0, -1);
     }
     console.log(`The server url is ${serverUrl}!`);
@@ -54,8 +55,9 @@ async function main() {
 }
 
 async function sendViewsStats(serverUrl, owner, repo, payload) {
+  const url = `${serverUrl}/api/repositories/${owner}/${repo}/views`;
   try {
-   const response = await got.post(`${serverUrl}/api/repositories/${owner}/${repo}/views`, {
+   const response = await got.post(url, {
       json: payload,
    }).json();
   } catch (error) {
@@ -64,8 +66,10 @@ async function sendViewsStats(serverUrl, owner, repo, payload) {
 }
 
 async function sendClonesStats(serverUrl, owner, repo, payload) {
+  const url = `${serverUrl}/api/repositories/${owner}/${repo}/clones`;
+
   try {
-    const response = await got.post(`${serverUrl}/api/repositories/${owner}/${repo}/clones`, {
+    const response = await got.post(url, {
        json: payload,
     }).json();
    } catch (error) {
