@@ -7,7 +7,7 @@ async function main() {
   try {
     const time = Date.now();
 
-    const serverUrl = core.getInput('server-url');
+    let serverUrl = core.getInput('server-url');
 
     // remove trailing slash
     if (serverUrl.endsWith('/')) {
