@@ -19623,6 +19623,12 @@ async function main() {
     const time = Date.now();
 
     const serverUrl = core.getInput('server-url');
+
+    // remove trailing slash
+    if (serverUrl.endsWith('/')) {
+      serverUrl = serverUrl.slice(0, -1);
+    }
+
     const token = core.getInput('access-token');
     console.log(`The token is ${token}!`);
   
