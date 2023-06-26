@@ -19628,6 +19628,7 @@ async function main() {
     if (serverUrl.endsWith('/')) {
       serverUrl = serverUrl.slice(0, -1);
     }
+    console.log(`The server url is ${serverUrl}!`);
 
     const token = core.getInput('access-token');
     console.log(`The token is ${token}!`);
