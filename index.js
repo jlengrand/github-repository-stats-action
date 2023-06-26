@@ -28,8 +28,8 @@ async function main() {
       repo: repo,
     })
 
-    await sendViewsStats(serverUrl, user, repo, views.data);
-    await sendClonesStats(serverUrl, user, repo, clones.data);
+    await sendViewsStats(serverUrl, owner, repo, views.data);
+    await sendClonesStats(serverUrl, owner, repo, clones.data);
   
     const payload = {
       owner: owner,
