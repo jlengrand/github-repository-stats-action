@@ -1,0 +1,16 @@
+on:
+  schedule:
+    - cron: '30 5 * * *' # Every day at 5:30 AM UTC
+
+jobs:
+  stats_job:
+    runs-on: ubuntu-latest
+    name: Grabbing latest statistics from the repository, every day
+    steps:
+      - name: Grabbing repo stats
+        id: stats
+        uses: /jlengrand/github-repository-stats-action@feat/grabbing-repo-stats
+        with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+      - name: Grabbing repo stats output
+        run: echo "The payload is ${{ steps.stats.outputs.payload }}"
