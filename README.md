@@ -46,7 +46,7 @@ jobs:
     steps:
       - name: Grabbing repo stats
         id: stats
-        uses: /jlengrand/github-repository-stats-action@feat/grabbing-repo-stats
+        uses: /jlengrand/github-repository-stats-action
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
 ```
