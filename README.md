@@ -26,10 +26,25 @@ Payload contains all the data grabbed from the GitHub API and sent to the websit
 
 ## Example usage
 
+You will need some sort of trigger to run the action. I recommend you use a cron job. You can run it once a week, or more often in order to avoid losing data in case the action fails.
+
 ```yaml
-uses: actions/github-repository-stats-action
-with:
-  who-to-greet: 'Bob de Bouwer'
+
+```yaml
+on:
+  schedule:
+    - cron: '30 5 * * *' # Every day at 5:30 AM UTC
+
+jobs:
+  stats_job:
+    runs-on: ubuntu-latest
+    name: Grabbing latest statistics from the repository, every day
+    steps:
+      - name: Grabbing repo stats
+        id: stats
+        uses: /jlengrand/github-repository-stats-action@feat/grabbing-repo-stats
+        with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
 ```
 
 ## License
