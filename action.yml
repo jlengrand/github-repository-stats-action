@@ -6,7 +6,7 @@ inputs:
     required: true
   server-url: 
     description: 'URL of the server to send statistics to. Used only for testing purposes'
-    default: 'https://localhost:8080' # TODO: Change!
+    default: 'https://www.repoinsights.com' # TODO: Change!
 outputs:
   payload:
     description: 'The payload we sent to the server'
