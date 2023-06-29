@@ -1,18 +1,22 @@
 # GitHub repository statistics
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+This action grabs [repository traffic](https://docs.github.com/en/rest/metrics/traffic?apiVersion=2022-11-28) from GitHub and send them to [Repo Insights](https://www.repoinsights.com/).
+
+The main idea here is to get over the limitation of Github's traffic view, [which only shows the last 14 days of traffic](https://docs.github.com/en/repositories/viewing-activity-and-data-for-your-repository/viewing-traffic-to-a-repository).
 
 ## Inputs
 
-### `who-to-greet`
+### `access-token`
 
-**Required** The name of the person to greet. Default `"World"`.
+**Required** The action requires a GitHub access token with write access to the repository. You can create one [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
+
+**Note:** Make sure to add the token to your repository secrets and not to hardcode it in your workflow.
 
 ## Outputs
 
-### `time`
+### `payload`
 
-The time we greeted you.
+Payload contains all the data grabbed from the GitHub API and sent to the website.
 
 ## Example usage
 
