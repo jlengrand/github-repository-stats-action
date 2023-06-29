@@ -12,6 +12,12 @@ The main idea here is to get over the limitation of Github's traffic view, [whic
 
 **Note:** Make sure to add the token to your repository secrets and not to hardcode it in your workflow.
 
+### `repository`
+
+The repository to grab the statistics from. Defaults to the current repository.
+
+**Note:**  Use the full name of the repository, including the owner. For example: `jlengrand/github-repository-stats-action`.
+
 ### `server-url`
 
 The URL of the Repo Insights server to send the data to. Used only for internal testing, and should not be used in production.

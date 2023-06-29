@@ -13,3 +13,16 @@ jobs:
           server-url: ${{ secrets.SERVER_URL }}
       - name: Grabbing repo stats output
         run: echo "The payload is ${{ steps.hello.outputs.payload }}"
+  hello_world_job_custom_repo:
+    runs-on: ubuntu-latest
+    name: Grabbing latest statistics from the repository
+    steps:
+      - name: Grabbing repo stats
+        id: hello_custom
+        uses: /jlengrand/github-repository-stats-action@feat/grabbing-repo-stats
+        with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+          server-url: ${{ secrets.SERVER_URL }}
+          repository: jlengrand/swacli
+      - name: Grabbing repo stats output
+        run: echo "The payload is ${{ steps.hello_custom.outputs.payload }}"

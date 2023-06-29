@@ -7,6 +7,10 @@ inputs:
   server-url: 
     description: 'URL of the server to send statistics to. Used only for testing purposes'
     default: 'https://www.repoinsights.com' # TODO: Change!
+  repository: 
+    description: "Repository to get statistics from (Ex: jlengrand/github-repository-stats-action). \n
+      Should be in the OWNER/REPOSITORY format \n
+      Defaults to the current repository the action is running on."
 outputs:
   payload:
     description: 'The payload we sent to the server'

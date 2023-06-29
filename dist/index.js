@@ -19622,11 +19622,25 @@ async function main() {
   try {
     const time = Date.now();
 
+    let repository = core.getInput('repository');
     let serverUrl = core.getInput('server-url');
+
+    let owner; 
+    let repo;
+    if (repository.length != 0 ) {
+      [owner, repo] = repository.split("/");
+
+    } else{
+      console.log("Grabbing repository from context");
+      const fullName = github.context.payload.repository.full_name;
+      [owner, repo] = fullName.split("/");
+    }
+
+    console.log(`Processing statistics for ${owner}/${repo}!`);
 
     // remove trailing slash
     if (serverUrl.endsWith('/')) {
-      console.log("slicing");
+      console.log("Removing serverUrl trailing slash");
       serverUrl = serverUrl.slice(0, -1);
     }
     console.log(`The server url is ${serverUrl}!`);
@@ -19634,8 +19648,7 @@ async function main() {
     const token = core.getInput('access-token');
     console.log(`The token is ${token}!`);
   
-    const fullName = github.context.payload.repository.full_name;
-    const [owner, repo] = fullName.split("/");
+
   
     console.log(`Found owner and repo : ${owner} and ${repo}`);
 
