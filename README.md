@@ -12,6 +12,12 @@ The main idea here is to get over the limitation of Github's traffic view, [whic
 
 **Note:** Make sure to add the token to your repository secrets and not to hardcode it in your workflow.
 
+### `server-url`
+
+The URL of the Repo Insights server to send the data to. Used only for internal testing, and should not be used in production.
+Defaults to `https://www.repoinsights.com/`.
+
+
 ## Outputs
 
 ### `payload`
