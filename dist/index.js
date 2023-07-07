@@ -19627,7 +19627,7 @@ async function main() {
 
     let owner; 
     let repo;
-    if (repository.length != 0 ) {
+    if (repository.length !== 0 ) {
       [owner, repo] = repository.split("/");
 
     } else{
@@ -19647,8 +19647,6 @@ async function main() {
 
     const token = core.getInput('access-token');
     console.log(`The token is ${token}!`);
-  
-
   
     console.log(`Found owner and repo : ${owner} and ${repo}`);
 
