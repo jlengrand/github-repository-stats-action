@@ -19620,7 +19620,7 @@ const github = __nccwpck_require__(5438);
 async function main() {
 
   try {
-    const time = Date.now();
+    const time = new Date().toISOString();
 
     let repository = core.getInput('repository');
     let serverUrl = core.getInput('server-url');
@@ -19662,14 +19662,21 @@ async function main() {
       repo: repo,
     })
 
+    const repoData = await octokit.request('GET /repos/{owner}/{repo}', {
+        owner: owner,
+        repo: repo,
+    })
+
     await sendViewsStats(serverUrl, owner, repo, views.data);
     await sendClonesStats(serverUrl, owner, repo, clones.data);
-  
+    await sendRepoStats(serverUrl, owner, repo, time, repoData.data);
+
     const payload = {
       owner: owner,
       repo: repo,
       views: views.data,
       clones: clones.data,
+      repoData: repoData.data,
       time: time
     }
 
@@ -19701,6 +19708,32 @@ async function sendClonesStats(serverUrl, owner, repo, payload) {
    } catch (error) {
      console.error(error);
    }
+}
+
+async function sendRepoStats(serverUrl, owner, repo, time, payload) {
+
+  const data = {
+    timestamp: time,
+    forks: payload.forks_count,
+    stars: payload.stargazers_count,
+    networks: payload.network_count,
+    subscribers: payload.subscribers_count,
+  }
+
+  console.log("SENDING")
+  console.log(data);
+
+  const url = `${serverUrl}/api/repositories/${owner}/${repo}/stars`;
+
+  try {
+    const response = await got_dist_source.post(url, {
+      json: data,
+    }).json();
+  } catch (error) {
+    console.error(error);
+  }
+
+
 }
 
 main();
