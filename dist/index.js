@@ -19620,7 +19620,7 @@ const github = __nccwpck_require__(5438);
 async function main() {
 
   try {
-    const time = Date.now();
+    const time = new Date().toISOString();
 
     let repository = core.getInput('repository');
     let serverUrl = core.getInput('server-url');
@@ -19713,10 +19713,10 @@ async function sendClonesStats(serverUrl, owner, repo, payload) {
 async function sendRepoStats(serverUrl, owner, repo, time, payload) {
 
   const data = {
-    time: time,
+    timestamp: time,
     forks: payload.forks_count,
     stars: payload.stargazers_count,
-    network: payload.network_count,
+    networks: payload.network_count,
     subscribers: payload.subscribers_count,
   }
 
