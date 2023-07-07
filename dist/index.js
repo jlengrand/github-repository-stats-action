@@ -19669,7 +19669,7 @@ async function main() {
 
     await sendViewsStats(serverUrl, owner, repo, views.data);
     await sendClonesStats(serverUrl, owner, repo, clones.data);
-    await sendRepoStats(serverUrl, owner, repo, repoData.data);
+    await sendRepoStats(serverUrl, owner, repo, time, repoData.data);
 
     const payload = {
       owner: owner,
@@ -19710,8 +19710,30 @@ async function sendClonesStats(serverUrl, owner, repo, payload) {
    }
 }
 
-async function sendRepoStats(serverUrl, owner, repo, payload) {
-  console.log("Sending repo stats : TODO");
+async function sendRepoStats(serverUrl, owner, repo, time, payload) {
+
+  const data = {
+    time: time,
+    forks: payload.forks_count,
+    stars: payload.stargazers_count,
+    network: payload.network_count,
+    subscribers: payload.subscribers_count,
+  }
+
+  console.log("SENDING")
+  console.log(data);
+
+  const url = `${serverUrl}/api/repositories/${owner}/${repo}/stars`;
+
+  try {
+    const response = await got_dist_source.post(url, {
+      json: data,
+    }).json();
+  } catch (error) {
+    console.error(error);
+  }
+
+
 }
 
 main();
