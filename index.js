@@ -65,6 +65,8 @@ async function main() {
     await sendViewsStats(serverUrl, owner, repo, views.data);
     await sendClonesStats(serverUrl, owner, repo, clones.data);
     await sendRepoStats(serverUrl, owner, repo, time, repoData.data);
+    await sendPathsStats(serverUrl, owner, repo, time, referralPaths.data);
+    await sendSourcesStats(serverUrl, owner, repo, time, referralSources.data);
 
     const payload = {
       owner: owner,
@@ -82,6 +84,36 @@ async function main() {
   } catch (error) {
     core.setFailed(error.message);
   }
+}
+
+async function sendSourcesStats(serverUrl, owner, repo, time, payload) {
+  const url = `${serverUrl}/api/repositories/${owner}/${repo}/sources`;
+
+  try {
+    const response = await got.post(url, {
+       json: {
+        timestamp: time,
+        payload
+      },
+    }).json();
+   } catch (error) {
+     console.error(error);
+   }
+}
+
+async function sendPathsStats(serverUrl, owner, repo, time, payload) {
+  const url = `${serverUrl}/api/repositories/${owner}/${repo}/paths`;
+
+  try {
+    const response = await got.post(url, {
+       json: {
+        timestamp: time,
+        payload
+      },
+    }).json();
+   } catch (error) {
+     console.error(error);
+   }
 }
 
 async function sendViewsStats(serverUrl, owner, repo, payload) {
