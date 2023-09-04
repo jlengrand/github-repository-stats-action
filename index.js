@@ -72,8 +72,8 @@ async function main() {
       views: views.data,
       clones: clones.data,
       repoData: repoData.data,
-      referralpaths: referralPaths,
-      referralsources: referralSources,
+      referralPaths: referralPaths,
+      referralSources: referralSources,
       time: time
     }
 
