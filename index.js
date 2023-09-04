@@ -52,10 +52,10 @@ async function main() {
         repo: repo,
     })
 
-    // const referralPaths = await octokit.request('GET /repos/{{owner}}/{{repo}}/traffic/popular/paths', {
-    //   owner: owner,
-    //   repo: repo,
-    // })
+    const referralPaths = await octokit.request('GET /repos/{{owner}}/{{repo}}/traffic/popular/paths', {
+      owner: owner,
+      repo: repo,
+    })
 
     // const referralSources = await octokit.request('GET /repos/{{owner}}/{{repo}}/traffic/popular/referrers', {
     //   owner: owner,
@@ -72,7 +72,7 @@ async function main() {
       views: views.data,
       clones: clones.data,
       repoData: repoData.data,
-      // referralPaths: referralPaths,
+      referralPaths: referralPaths,
       // referralSources: referralSources,
       time: time
     }
