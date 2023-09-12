@@ -52,9 +52,21 @@ async function main() {
         repo: repo,
     })
 
+    const referralPaths = await octokit.request('GET /repos/{owner}/{repo}/traffic/popular/paths', {
+      owner: owner,
+      repo: repo,
+    })
+
+    const referralSources = await octokit.request('GET /repos/{owner}/{repo}/traffic/popular/referrers', {
+      owner: owner,
+      repo: repo,
+    })
+
     await sendViewsStats(serverUrl, owner, repo, views.data);
     await sendClonesStats(serverUrl, owner, repo, clones.data);
     await sendRepoStats(serverUrl, owner, repo, time, repoData.data);
+    await sendPathsStats(serverUrl, owner, repo, time, referralPaths.data);
+    await sendSourcesStats(serverUrl, owner, repo, time, referralSources.data);
 
     const payload = {
       owner: owner,
@@ -62,6 +74,8 @@ async function main() {
       views: views.data,
       clones: clones.data,
       repoData: repoData.data,
+      referralPaths: referralPaths.data,
+      referralSources: referralSources.data,
       time: time
     }
 
@@ -70,6 +84,36 @@ async function main() {
   } catch (error) {
     core.setFailed(error.message);
   }
+}
+
+async function sendSourcesStats(serverUrl, owner, repo, time, payload) {
+  const url = `${serverUrl}/api/repositories/${owner}/${repo}/sources`;
+
+  try {
+    const response = await got.post(url, {
+       json: {
+        timestamp: time,
+        payload
+      },
+    }).json();
+   } catch (error) {
+     console.error(error);
+   }
+}
+
+async function sendPathsStats(serverUrl, owner, repo, time, payload) {
+  const url = `${serverUrl}/api/repositories/${owner}/${repo}/paths`;
+
+  try {
+    const response = await got.post(url, {
+       json: {
+        timestamp: time,
+        payload
+      },
+    }).json();
+   } catch (error) {
+     console.error(error);
+   }
 }
 
 async function sendViewsStats(serverUrl, owner, repo, payload) {
@@ -117,7 +161,6 @@ async function sendRepoStats(serverUrl, owner, repo, time, payload) {
   } catch (error) {
     console.error(error);
   }
-
 
 }
 
