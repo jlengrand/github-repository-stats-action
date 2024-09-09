@@ -28,7 +28,7 @@ Defaults to `https://www.repoinsights.com/`.
 
 ### `payload`
 
-Payload contains all the data grabbed from the GitHub API and sent to the website.
+Payload contains all the data grabbed from the GitHub API and sent to the website. You could use that and save this locally if you want local backup for example.
 
 ## Example usage
 
