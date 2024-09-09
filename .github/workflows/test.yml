@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Grabbing repo stats
         id: hello
-        uses: /jlengrand/github-repository-stats-action@main
+        uses: /jlengrand/github-repository-stats-action@feat/referrals
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           server-url: ${{ secrets.SERVER_URL }}
@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Grabbing repo stats
         id: hello_custom
-        uses: /jlengrand/github-repository-stats-action@main
+        uses: /jlengrand/github-repository-stats-action@feat/referrals
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           server-url: ${{ secrets.SERVER_URL }}
