@@ -11,6 +11,7 @@ The main idea here is to get over the limitation of Github's traffic view, [whic
 **Required** The action requires a GitHub access token with write access to the repository. You can create one [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
 
 **Note:** Make sure to add the token to your repository secrets and not to hardcode it in your workflow.
+**Note:** I'd love using less rights than this, unfortunately [the GitHub API](https://docs.github.com/en/rest/metrics/traffic?apiVersion=2022-11-28) required push access to access repository statistics.
 
 ### `repository`
 
