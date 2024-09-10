@@ -14,3 +14,23 @@ jobs:
           access-token: ${{ secrets.ACCESS_TOKEN }}
       - name: Grabbing repo stats output
         run: echo "The payload is ${{ steps.stats.outputs.payload }}"
+      - name: elm-firebase
+        uses: /jlengrand/github-repository-stats-action@main
+        with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+          repository: jlengrand/elm-firebase
+      - name: epaper-dashboard-blog
+        uses: /jlengrand/github-repository-stats-action@main
+        with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+          repository: jlengrand/epaper-dashboard-blog
+      - name: epaper-dashboard-blog
+        uses: /jlengrand/github-repository-stats-action@main
+        with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+          repository: jlengrand/swacli
+      - name: elm-ports
+        uses: /jlengrand/github-repository-stats-action@main
+        with:
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+          repository: jlengrand/elm-ports
