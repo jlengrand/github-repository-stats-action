@@ -26,3 +26,4 @@ jobs:
           repository: jlengrand/swacli
       - name: Grabbing repo stats output
         run: echo "The payload is ${{ steps.hello_custom.outputs.payload }}"
+
