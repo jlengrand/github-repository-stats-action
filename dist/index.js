@@ -19703,55 +19703,38 @@ async function main() {
 
 async function sendSourcesStats(serverUrl, owner, repo, time, payload) {
   const url = `${serverUrl}/api/repositories/${owner}/${repo}/sources`;
-
-  try {
-    const response = await got_dist_source.post(url, {
-       json: {
-        timestamp: time,
-        payload
-      },
-    }).json();
-   } catch (error) {
-     console.error(error);
-   }
+  const response = await got_dist_source.post(url, {
+     json: {
+      timestamp: time,
+      payload
+    },
+  }).json();
 }
 
 async function sendPathsStats(serverUrl, owner, repo, time, payload) {
   const url = `${serverUrl}/api/repositories/${owner}/${repo}/paths`;
 
-  try {
-    const response = await got_dist_source.post(url, {
-       json: {
-        timestamp: time,
-        payload
-      },
-    }).json();
-   } catch (error) {
-     console.error(error);
-   }
+  const response = await got_dist_source.post(url, {
+     json: {
+      timestamp: time,
+      payload
+    },
+  }).json();
 }
 
 async function sendViewsStats(serverUrl, owner, repo, payload) {
   const url = `${serverUrl}/api/repositories/${owner}/${repo}/views`;
-  try {
    const response = await got_dist_source.post(url, {
       json: payload,
    }).json();
-  } catch (error) {
-    console.error(error);
-  }
 }
 
 async function sendClonesStats(serverUrl, owner, repo, payload) {
   const url = `${serverUrl}/api/repositories/${owner}/${repo}/clones`;
 
-  try {
     const response = await got_dist_source.post(url, {
        json: payload,
     }).json();
-   } catch (error) {
-     console.error(error);
-   }
 }
 
 async function sendRepoStats(serverUrl, owner, repo, time, payload) {
@@ -19769,13 +19752,9 @@ async function sendRepoStats(serverUrl, owner, repo, time, payload) {
 
   const url = `${serverUrl}/api/repositories/${owner}/${repo}/stars`;
 
-  try {
     const response = await got_dist_source.post(url, {
       json: data,
     }).json();
-  } catch (error) {
-    console.error(error);
-  }
 
 }
 
